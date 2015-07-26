@@ -1,0 +1,58 @@
+Install_LabJack_OSX
+MH, December 2013
+
+Steps for Using LabJack U6 with MATLAB on Mac OS X
+	(for Linux, skip Step 1)
+
+1) Install Xcode
+Note: Only the command line tools are required (not the complete Xcode application). If you do not wish to use Xcode, you can delete all of the Xcode-related files (e.g. /Developer/Documentation) after installation. Xcode is a free download from the AMac App store. Installers for the command line tools are free with registration.
+
+For OS X 10.6, any version of Xcode up to 4.1 is fine.
+
+For OS X 10.7 or 10.8, any version of Xcode 4+ is fine. You can use the command-line tools installer for 4.3.3, for example. You must also apply this fix for MATLAB:
+http://www.mathworks.com/support/solutions/en/data/1-FR6LXJ/
+
+For OS X 10.9 (“Mavericks”) and MATLAB R2012b or earlier, apply the patch for 10.8 above and then follow the fix here:
+http://www.mathworks.com/matlabcentral/answers/103258-mex-on-mavericks-with-r2012b
+MATLAB R2013 is fully compatible with OS X 10.9 and does not require the patch.
+
+
+2) Install the LabJack "Exodriver":
+http://labjack.com/support/software
+Click and download the link for “Mac OS X Package”. The installer will install the “Exodriver”.
+(for Linux, you may need to install libusb 1.0.9)
+
+
+3) Get the MATLAB code from the FileExchange:
+
+http://www.mathworks.com/matlabcentral/fileexchange/37814-labjacku6
+
+This code has been tested on MATLAB R2012, but it should run fine on newer releases and older releases up to R2009. Put the MATLAB code in a directory that is on the MATLAB path.
+
+
+Troubleshooting:
+
+* If get an error like the following:
+
+LJU6/open: ERROR: unable to load Exodriver.
+  library: /usr/local/lib/liblabjackusb
+  header: /usr/local/include/labjackusb.h
+  “Unable to open file: /usr/local/include/labjackusb.h”
+
+you may have to change the permissions of the directories that the driver uses. Use the following commands in the Terminal:
+
+  sudo chmod a+rx /usr/local/include/
+  sudo chmod a+rx /usr/local/include/
+
+
+* if you get an error like the following:
+
+LJU6/open: ERROR: unable to load Exodriver.
+  library: /usr/local/lib/liblabjackusb
+  header: /usr/local/include/labjackusb.h
+  "Failed to preprocess the input file.
+ Output from preprocessor is:/bin/bash: gcc-4.2: command not found
+
+then follow the fixes from Step 2 and ensure that Step 1 has been completed (e.g., type “gcc” in the terminal).
+
+
