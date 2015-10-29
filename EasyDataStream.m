@@ -1,4 +1,4 @@
-function [RecordedData,data] = StreamData(DataRate,NumberOfChannels,TimeToStream)
+function [RecordedData,data] = EasyDataStream(DataRate,NumberOfChannels,TimeToStream)
 % STREAMDATA records voltage data using a LabJack
 %
 % STREAMDATA uses the class labJackU6 to talk to the DAQ
